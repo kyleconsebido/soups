@@ -1,0 +1,123 @@
+.button {
+  --y: 0;
+  --x: 0;
+
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background-color: var(--black-700);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 1em;
+  border-radius: 50px;
+  border: none;
+  font-family: inherit;
+  transition: 0.2s;
+}
+
+.button.gray {
+  background-color: var(--black-500);
+}
+
+.button.yellow {
+  color: var(--black-700);
+  background-color: var(--yellow-700);
+}
+
+.button.red {
+  background-color: var(--red-500);
+}
+
+.button:enabled:hover {
+  background-color: var(--black-800);
+  cursor: pointer;
+}
+
+.button.gray:enabled:hover {
+  background-color: var(--black-400);
+}
+
+.button.yellow:enabled:hover {
+  background-color: var(--yellow-800);
+}
+
+.button.red:enabled:hover {
+  background-color: var(--red-600);
+}
+
+.button:enabled:active {
+  background-color: var(--black-900);
+}
+
+.button.gray:enabled:active {
+  background-color: var(--black-300);
+}
+
+.button.red:enabled:active {
+  background-color: var(--red-700);
+}
+
+.button.yellow:enabled:active {
+  background-color: var(--yellow-900);
+}
+
+.button:disabled {
+  background-color: var(--gray-200);
+  color: var(--black-500);
+}
+
+.button:disabled > svg {
+  filter: grayscale(1);
+}
+
+.button > svg {
+  height: 1em;
+  width: 1em;
+  transition: 0.2s;
+  scale: 1.2;
+}
+
+.button:enabled:active > svg {
+  scale: 1.25;
+}
+
+.hasIcon {
+  min-width: 1em;
+  text-align: start;
+}
+
+.button {
+  z-index: 1;
+}
+.button::before {
+  --height: 100px;
+  --width: 100px;
+  --translate-y: calc(var(--y, 0) * 1px - var(--height) / 2);
+  --translate-x: calc(var(--x, 0) * 1px - var(--width) / 2);
+
+  display: var(--display-animate, initial);
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  translate: var(--translate-x) var(--translate-y);
+  height: var(--height);
+  width: var(--width);
+  background-color: inherit;
+  filter: saturate(1.5);
+  border-radius: 100%;
+  opacity: 0;
+  scale: 0.1;
+  transition: opacity 0.5s, translate 5s cubic-bezier(0.05, 1.56, 0, 0.81),
+    scale 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s;
+  backface-visibility: hidden;
+}
+
+.button:enabled:hover::before {
+  opacity: 0.5;
+  scale: 1;
+}

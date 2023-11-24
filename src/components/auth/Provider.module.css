@@ -1,0 +1,16 @@
+.button {
+  height: 4em;
+  width: 100%;
+  max-width: 350px;
+  font-size: 1rem;
+  display: flex;
+  gap: 1em;
+}
+
+.button:enabled:hover {
+  background-color: var(--red-200) ;
+}
+
+.icon {
+  fill: white;
+}

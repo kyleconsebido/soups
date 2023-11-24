@@ -1,0 +1,15 @@
+.veggies {
+  animation: moveup 2s ease-in-out infinite;
+}
+
+@keyframes moveup {
+  0% {
+    translate: 0;
+  }
+  50% {
+    translate: 0 -5px;
+  }
+  100% {
+    translate: 0;
+  }
+}

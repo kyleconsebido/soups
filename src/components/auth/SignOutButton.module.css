@@ -1,0 +1,7 @@
+.text {
+  transition: filter 0.2s;
+}
+
+.icon *:not([fill="none"]) {
+  fill: white
+}

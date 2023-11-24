@@ -1,0 +1,49 @@
+@import-normalize;
+
+:root {
+  --gray-200: #e8e3bc;
+  --gray-300: #9f9f9f;
+  --black-300: #5b5b5b;
+  --black-400: #4b4b4b;
+  --black-500: #393939;
+  --black-600: #303030;
+  --black-700: #211f1f;
+  --black-800: #1b1b1b;
+  --black-900: #000000;
+  --red-200: #a52a2a;
+  --red-500: #c81414;
+  --red-600: #cf2222;
+  --red-700: #e21717;
+  --orange-500: #f0751c;
+  --orange-900: #f4450e;
+  --yellow-700: #edbf1f;
+  --yellow-800: #f7c100;
+  --yellow-900: #ffc800;
+  --green-300: #42a015;
+}
+
+html {
+  background-color: var(--black-600);
+  color: white;
+  scrollbar-gutter: stable;
+}
+
+html::-webkit-scrollbar {
+  width: 3px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--black-300);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: var(--black-400);
+}
+
+body {
+  margin: 0;
+}

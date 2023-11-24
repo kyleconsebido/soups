@@ -1,0 +1,50 @@
+.nav {
+  text-decoration: none;
+  background-color: var(--black-700);
+  /* background-color: var(--black-500); */
+  /* box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.3); */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: top 0.4s;
+}
+
+.nav.hide {
+  transition: top 1s;
+  top: -100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0.5rem 10svw;
+  max-width: 1920px;
+  margin: auto;
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.end {
+  margin-left: auto;
+}
+
+.logo {
+  height: 40px;
+  width: 100%;
+}
+
+.signIn {
+  font-weight: bold;
+  font-size: 1rem;
+  height: 32px;
+}

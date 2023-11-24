@@ -1,0 +1,86 @@
+.container {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 300px;
+  height: 200px;
+  border-radius: 6px;
+  background-color: var(--black-500);
+  box-sizing: border-box;
+  padding: 1em;
+  transform-origin: top right;
+  animation: fade-scale-up 0.2s;
+  display: grid;
+  grid-template-rows: 40px 1fr;
+}
+
+.menu.close {
+  transition: opacity 0.2s, scale 0.2s;
+  opacity: 0;
+  scale: 0.8;
+}
+
+.user {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  column-gap: 1em;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.info {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.info > span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.posts {
+  text-decoration: none;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.posts > button {
+  width: 100%;
+}
+
+.posts > button:enabled:hover {
+  background-color: var(--red-500);
+}
+
+.posts > button > .soupIcon {
+  scale: 1.5;
+}
+
+.posts > button > svg * {
+  stroke: white;
+}
+
+.signOut {
+  margin-top: auto;
+  margin-left: auto;
+  width: 100%;
+}
+
+@keyframes fade-scale-up {
+  from {
+    opacity: 0;
+    scale: 0.8;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}

@@ -1,0 +1,47 @@
+.btn {
+  position: relative;
+  border-radius: 100%;
+  height: 32px;
+  width: 32px;
+  background-color: var(--black-300);
+  padding: 0;
+  border: 0;
+  transition: filter 0.2s;
+  z-index: 1;
+}
+
+.btn:enabled {
+  cursor: pointer;
+}
+
+.btn:enabled:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-color: var(--black-400);
+  scale: 0.8;
+  opacity: 0;
+  transition: scale 0.2s ease-out, opacity 0.2s;
+}
+
+.btn:enabled:hover::after {
+  scale: 1.2;
+  opacity: 0.6;
+}
+
+.container {
+  border-radius: 100%;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+}

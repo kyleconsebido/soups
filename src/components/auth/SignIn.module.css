@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+  display: grid;
+  grid-template-rows: 50px 1fr 1fr;
+  row-gap: 1em;
+  justify-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: auto;
+  height: 100%;
+  min-height: 600px;
+}
+
+.welcome {
+  font-size: 3.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  display: flex;
+  padding-top: 1em;
+}
+
+.providers {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  grid-template-rows: min-content;
+  row-gap: 2rem;
+}
