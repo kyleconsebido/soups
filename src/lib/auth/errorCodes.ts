@@ -22,7 +22,7 @@ export function getErrorMessage(errorCode: ErrorCode | string): string {
     case "OAuthCreateAccount":
     case "EmailCreateAccount":
     case "Callback":
-      return "An error occured. Try signing in with a different account";
+      return "An error occured. Try again later";
     case "OAuthAccountNotLinked":
       return "To confirm your identity, sign in with the same account you used originally";
     case "EmailSignin":

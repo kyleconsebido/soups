@@ -69,6 +69,11 @@
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
+.observerTarget {
+  position: absolute;
+  top: 170%;
+}
+
 @media (max-width: 768px) {
   .logo {
     display: none;

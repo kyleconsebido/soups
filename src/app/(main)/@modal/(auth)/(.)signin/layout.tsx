@@ -2,17 +2,19 @@
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import Modal, { type ModalRef } from "@/components/shared/Modal";
-import styles from "./layout.module.css";
 import CloseButton from "@/components/shared/icons/CloseButton";
+import styles from "./layout.module.css";
 
 export default function SignInModalLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isOpen, setIsOpen] = useState(true);
-  const router = useRouter();
   const modalRef = useRef<ModalRef>(null);
+
+  const [isOpen, setIsOpen] = useState(true);
+
+  const router = useRouter();
 
   function handleClose() {
     setIsOpen(false);

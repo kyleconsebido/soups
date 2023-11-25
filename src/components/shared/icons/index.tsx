@@ -10,3 +10,5 @@ export { default as Close } from "./Close";
 export { default as DefaultAvatar } from "./DefaultAvatar";
 export { default as SignOut } from "./SignOut";
 export { default as Soup } from "./Soup";
+export { default as User } from "./User";
+export { default as EmptyBowl } from "./EmptyBowl";

@@ -7,15 +7,16 @@
   top: 40px;
   right: 0;
   width: 300px;
-  height: 200px;
+  height: fit-content;
   border-radius: 6px;
-  background-color: var(--black-500);
+  background-color: var(--black-700);
   box-sizing: border-box;
   padding: 1em;
   transform-origin: top right;
   animation: fade-scale-up 0.2s;
   display: grid;
-  grid-template-rows: 40px 1fr;
+  grid-template-rows: 40px auto;
+  row-gap: 2em;
 }
 
 .menu.close {
@@ -46,6 +47,11 @@
   text-overflow: ellipsis;
 }
 
+.buttons {
+  display: grid;
+  row-gap: 1em;
+}
+
 .posts {
   text-decoration: none;
   margin-top: auto;
@@ -56,8 +62,12 @@
   width: 100%;
 }
 
+.posts > button {
+  background-color: var(--black-500);
+}
+
 .posts > button:enabled:hover {
-  background-color: var(--red-500);
+  background-color: var(--red-500) !important;
 }
 
 .posts > button > .soupIcon {
@@ -82,5 +92,15 @@
   to {
     opacity: 1;
     scale: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu.hamburgerOpen {
+    background-color: var(--black-500);
+  }
+
+  .menu.hamburgerOpen .posts > button {
+    background-color: var(--black-700);
   }
 }

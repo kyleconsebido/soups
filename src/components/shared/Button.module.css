@@ -15,7 +15,7 @@
   border-radius: 50px;
   border: none;
   font-family: inherit;
-  transition: 0.2s;
+  transition: background-color 0.2s;
 }
 
 .button.gray {
@@ -76,7 +76,7 @@
 .button > svg {
   height: 1em;
   width: 1em;
-  transition: 0.2s;
+  transition: filter 0.2s, scale 0.2s;
   scale: 1.2;
 }
 

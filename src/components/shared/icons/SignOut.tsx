@@ -26,7 +26,7 @@ export default function SignOut({
           height="61"
           rx="10.5"
           stroke="#393939"
-          stroke-width="3"
+          strokeWidth="3"
           fill="none"
         />
       </mask>
@@ -50,7 +50,7 @@ export default function SignOut({
           height="24.4853"
           transform="rotate(-45 17.1213 35.4351)"
           stroke="#393939"
-          stroke-width="3"
+          strokeWidth="3"
           fill="none"
         />
       </mask>

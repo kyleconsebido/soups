@@ -1,7 +1,6 @@
 @import-normalize;
 
 :root {
-  --gray-200: #e8e3bc;
   --gray-300: #9f9f9f;
   --black-300: #5b5b5b;
   --black-400: #4b4b4b;
@@ -16,6 +15,7 @@
   --red-700: #e21717;
   --orange-500: #f0751c;
   --orange-900: #f4450e;
+  --yellow-100: #e8e3bc;
   --yellow-700: #edbf1f;
   --yellow-800: #f7c100;
   --yellow-900: #ffc800;
@@ -26,6 +26,7 @@ html {
   background-color: var(--black-600);
   color: white;
   scrollbar-gutter: stable;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html::-webkit-scrollbar {

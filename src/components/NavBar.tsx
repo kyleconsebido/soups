@@ -1,43 +1,54 @@
 "use client";
 import type { Session } from "next-auth";
-import { useState, useEffect } from "react";
+import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useHeroContext } from "@/context/heroObserverContext";
 import { LogoName } from "./shared/icons";
 import RouteLoaderLink from "./shared/RouteLoaderLink";
 import Button from "./shared/Button";
+import HamburgerNav from "./HamburgerNav";
 import AvatarMenu from "./AvatarMenu";
 import styles from "./NavBar.module.css";
 
 export default function NavBar({ user }: { user: Session["user"] }) {
-  const [isShown, setIsShown] = useState(true);
+  const { isIntersecting } = useHeroContext();
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
-  useEffect(() => {
-    let previousScrollPosition = 0;
-    let currentScrollPosition = 0;
+  const handleHamburgerOpen = useCallback(() => {
+    setIsHamburgerOpen(true);
+  }, []);
 
-    function handleScroll() {
-      currentScrollPosition = window.scrollY;
-
-      if (previousScrollPosition - currentScrollPosition < 0) {
-        setIsShown(false);
-      } else if (previousScrollPosition - currentScrollPosition > 0) {
-        setIsShown(true);
-      }
-
-      previousScrollPosition = currentScrollPosition;
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
+  const handleHamburgerClose = useCallback(() => {
+    setIsHamburgerOpen(false);
   }, []);
 
   return (
-    <nav className={cn(styles.nav, !isShown && styles.hide)}>
+    <nav
+      className={cn(
+        styles.nav,
+        !isIntersecting && !user && styles.shift,
+        isHamburgerOpen && styles.hamburgerOpen
+      )}
+    >
       <div className={styles.container}>
         <ul className={styles.list}>
+          {user && (
+            <li className={styles.hamburger}>
+              <HamburgerNav
+                isOpen={isHamburgerOpen}
+                openNav={handleHamburgerOpen}
+                closeNav={handleHamburgerClose}
+              />
+            </li>
+          )}
           <li>
-            <RouteLoaderLink className={styles.link} href={"/"}>
+            <RouteLoaderLink
+              className={cn(
+                styles.link,
+                !isIntersecting && !user && styles.hide
+              )}
+              href={"/"}
+            >
               <LogoName className={styles.logo} />
             </RouteLoaderLink>
           </li>
@@ -46,7 +57,7 @@ export default function NavBar({ user }: { user: Session["user"] }) {
           <li>
             {!user ? (
               <RouteLoaderLink
-                className={styles.link}
+                className={cn(styles.link, !isIntersecting && styles.hide)}
                 href={"/signin"}
                 scroll={false}
               >
@@ -59,7 +70,7 @@ export default function NavBar({ user }: { user: Session["user"] }) {
                 </Button>
               </RouteLoaderLink>
             ) : (
-              <AvatarMenu />
+              <AvatarMenu isHamburgerOpen={isHamburgerOpen} user={user} />
             )}
           </li>
         </ul>

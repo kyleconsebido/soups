@@ -1,0 +1,84 @@
+.main {
+  display: flex;
+  height: 100svh;
+  width: 100svw;
+  justify-items: center;
+}
+
+.container {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  box-sizing: border-box;
+  justify-content: center;
+  padding: 5svh 10svw;
+}
+
+.icon {
+  width: 400px;
+  height: 400px;
+  transition: scale 0.2s;
+}
+
+.icon:active  {
+  scale: 0.9;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 1fr);
+  row-gap: 1em;
+  width: 400px;
+}
+
+.code {
+  height: 10rem;
+  font-size: 10rem;
+  font-weight: 900;
+}
+
+.code::after {
+  content: ".";
+  color: var(--yellow-900);
+}
+
+.message {
+  height: 5rem;
+  font-size: 5rem;
+  white-space: nowrap;
+}
+
+.homeLink {
+  text-decoration: none;
+}
+
+.homeBtn {
+  font-size: 2rem;
+}
+
+@media (max-width: 1040px) {
+  .icon {
+    width: 250px;
+    height: 250px;
+  }
+
+  .info {
+    width: 250px;
+  }
+
+  .code {
+    height: 5rem;
+    font-size: 5rem;
+    font-weight: 900;
+  }
+
+  .message {
+    height: 2.5rem;
+    font-size: 2.5rem;
+  }
+
+  .homeBtn {
+    font-size: 1rem;
+  }
+}

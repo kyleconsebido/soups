@@ -1,17 +1,23 @@
+"use client";
+import type { Session } from "next-auth";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useSession } from "next-auth/react";
+import { cn } from "@/lib/utils";
+import { User } from "./shared/icons";
+import RouteLoaderLink from "./shared/RouteLoaderLink";
 import Avatar from "./shared/Avatar";
+import Button from "./shared/Button";
 import SignOutButton from "./auth/SignOutButton";
 import styles from "./AvatarMenu.module.css";
-import RouteLoaderLink from "./shared/RouteLoaderLink";
-import Button from "./shared/Button";
-import { Chefs, Soup } from "./shared/icons";
 
 const MENU_TRANSITION_MS = 200;
 
-export default function AvatarMenu() {
-  const { data } = useSession();
-
+export default function AvatarMenu({
+  user,
+  isHamburgerOpen,
+}: {
+  user?: Session["user"];
+  isHamburgerOpen: boolean;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -30,7 +36,7 @@ export default function AvatarMenu() {
 
       setTimeout(() => {
         setIsOpen(false);
-      }, 200);
+      }, MENU_TRANSITION_MS);
     },
     []
   );
@@ -59,36 +65,35 @@ export default function AvatarMenu() {
 
   return (
     <div className={styles.container}>
-      <Avatar
-        src={data?.user?.image!}
-        onClick={isOpen ? handleClose : handleOpen}
-      />
+      <Avatar src={user?.image!} onClick={isOpen ? handleClose : handleOpen} />
 
       {isOpen && (
         <div
           ref={menuRef}
-          className={styles.menu}
+          className={cn(styles.menu, isHamburgerOpen && styles.hamburgerOpen)}
           onClick={(e) => e.stopPropagation()}
           aria-label="Account Menu"
           role="dialog"
         >
           <div className={styles.user}>
-            <Avatar
-              src={data?.user?.image!}
-              className={styles.avatar}
-              disabled
-            />
+            <Avatar src={user?.image!} className={styles.avatar} disabled />
             <div className={styles.info}>
-              <span className={styles.name}>{data?.user?.name}</span>
-              <span className={styles.email}>{data?.user?.email}</span>
+              <span className={styles.name}>{user?.name}</span>
+              <span className={styles.email}>{user?.email}</span>
             </div>
           </div>
-          <RouteLoaderLink href={"/1"} className={styles.posts}>
-            <Button icon={<Soup className={styles.soupIcon} />}>
-              Your Soups
-            </Button>
-          </RouteLoaderLink>
-          <SignOutButton className={styles.signOut} variant="red" />
+          <div className={styles.buttons}>
+            <RouteLoaderLink
+              href={`/profile/${user?.id ?? ""}`}
+              className={styles.posts}
+              onClick={() => handleClose()}
+            >
+              <Button icon={<User className={styles.soupIcon} />}>
+                Profile
+              </Button>
+            </RouteLoaderLink>
+            <SignOutButton className={styles.signOut} variant="red" />
+          </div>
         </div>
       )}
     </div>

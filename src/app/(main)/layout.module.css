@@ -1,0 +1,10 @@
+.main {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 5svw;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 50px 10svw;
+  max-width: 1920px;
+  min-height: calc(100svh - 60px);
+}
