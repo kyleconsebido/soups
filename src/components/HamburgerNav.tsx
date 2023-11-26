@@ -69,7 +69,7 @@ function Nav({
 
   return (
     <div className={cn(styles.nav, isClosing && styles.closing)}>
-      <div className={styles.container}>
+      <div className={cn("scrollbar", styles.container)}>
         {Object.entries(paths).map(([path, pathInfo]) => (
           <RouteLoaderLink
             key={path}

@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html className="scrollbar" lang="en">
       <body className={inriaSans.className}>
         <GlobalContextProvider>{children}</GlobalContextProvider>
       </body>

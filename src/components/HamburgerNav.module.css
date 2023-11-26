@@ -82,6 +82,7 @@
   font-size: 1.5rem;
   font-weight: 900;
   letter-spacing: 1px;
+  overflow-y: auto;
 }
 
 .link {
