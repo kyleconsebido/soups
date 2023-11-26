@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "generate": "drizzle-kit generate:sqlite",
+    "push": "drizzle-kit push:sqlite",
     "migrate": "npx tsx src/lib/db/migrate.ts"
   },
   "dependencies": {
