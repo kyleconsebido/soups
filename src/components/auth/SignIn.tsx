@@ -1,8 +1,7 @@
 import "server-only";
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
 import { getProviders } from "next-auth/react";
-import { options } from "@/app/api/auth/[...nextauth]/options";
+import { getSession } from "@/utils/auth/getSession";
 import { cn } from "@/utils";
 import Provider from "./Provider";
 import AuthError from "./AuthError";
@@ -10,7 +9,7 @@ import Logos from "../../assets/Logos";
 import styles from "./SignIn.module.css";
 
 export default async function SignIn() {
-  const session = await getServerSession(options);
+  const session = await getSession();
 
   if (session) {
     redirect("/");

@@ -3,7 +3,7 @@ import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.
 import { useRouter } from "next/navigation";
 import { useLoadingContext } from "@/context/loadingContext";
 
-export default function useLoaderRouter(): AppRouterInstance {
+export function useLoaderRouter(): AppRouterInstance {
   const { loadRoute } = useLoadingContext();
   const router = useRouter();
 

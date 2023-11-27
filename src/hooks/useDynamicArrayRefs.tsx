@@ -5,7 +5,7 @@ export interface ArrayRefsOptions<T> {
   fillWith?: T;
 }
 
-export default function useDynamicArrayRefs<T>(
+export function useDynamicArrayRefs<T>(
   array: unknown[],
   options?: ArrayRefsOptions<T>
 ): React.MutableRefObject<T[]> {

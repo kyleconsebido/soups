@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-export default function useEffectAfterMount(
+export function useEffectAfterMount(
   effect: React.EffectCallback,
   deps: React.DependencyList
 ) {

@@ -10,9 +10,7 @@ interface useObserverParams {
   target?: Element;
 }
 
-export default function useObserver({
-  target,
-}: useObserverParams): ObserverInstance {
+export function useObserver({ target }: useObserverParams): ObserverInstance {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const targetRef = useRef<HTMLSpanElement | null>(null);
   useEffect(() => {

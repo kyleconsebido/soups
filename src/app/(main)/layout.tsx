@@ -1,16 +1,16 @@
-import { type Session, getServerSession } from "next-auth";
-import { options } from "../api/auth/[...nextauth]/options";
+import type { Session } from "next-auth";
+import { getSession } from "next-auth/react";
 import NavBar from "@/components/layout/NavBar";
-import Hero from "@/app/(main)/Hero";
 import SideBar from "@/components/layout/Sidebar";
+import Hero from "./Hero";
+import HeroContextProvider from "./heroObserverContext";
 import styles from "./layout.module.css";
-import HeroContextProvider from "@/app/(main)/heroObserverContext";
 
 export default async function MainLayout(props: {
   children: React.ReactNode;
   modal: React.ReactNode;
 }) {
-  const session = await getServerSession(options);
+  const session = await getSession();
 
   return (
     <>
