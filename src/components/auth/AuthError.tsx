@@ -1,8 +1,7 @@
 "use client";
-import type { ToastInstance } from "../Toasts";
 import { useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
-import { useToastContext } from "@/context/global";
+import { useToastContext } from "@/context";
 import { getErrorMessage } from "@/lib/auth/errorCodes";
 
 export default function AuthError() {

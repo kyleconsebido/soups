@@ -2,7 +2,7 @@
 import type { ClientSafeProvider } from "next-auth/react";
 import { signIn } from "next-auth/react";
 import ProviderIcon from "./ProviderIcons";
-import Button from "../shared/Button";
+import Button from "../Button";
 import styles from "./Provider.module.css";
 
 export default function Provider({

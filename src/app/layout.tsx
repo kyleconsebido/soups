@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { inriaSans } from "../lib/fonts";
+import { inriaSans } from "../assets/fonts";
+import GlobalContextProvider from "@/context";
 import "./globals.css";
-import GlobalContextProvider from "@/context/global";
 
 export const metadata: Metadata = {
   title: "SOUPS",

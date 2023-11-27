@@ -1,10 +1,10 @@
 import { type Session, getServerSession } from "next-auth";
 import { options } from "../api/auth/[...nextauth]/options";
-import NavBar from "@/components/NavBar";
-import Hero from "@/components/Hero";
-import SideBar from "@/components/Sidebar";
+import NavBar from "@/components/layout/NavBar";
+import Hero from "@/app/(main)/Hero";
+import SideBar from "@/components/layout/Sidebar";
 import styles from "./layout.module.css";
-import HeroContextProvider from "@/context/heroObserverContext";
+import HeroContextProvider from "@/app/(main)/heroObserverContext";
 
 export default async function MainLayout(props: {
   children: React.ReactNode;

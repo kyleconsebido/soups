@@ -1,10 +1,10 @@
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
-import RouteLoaderLink from "@/components/shared/RouteLoaderLink";
-import Button from "@/components/shared/Button";
+import RouteLoaderLink from "@/components/RouteLoaderLink";
+import Button from "@/components/Button";
 import SignOutButton from "@/components/auth/SignOutButton";
-import Logos from "@/components/shared/Logos";
+import Logos from "@/assets/Logos";
 import styles from "./page.module.css";
 
 export default async function SignInPage() {

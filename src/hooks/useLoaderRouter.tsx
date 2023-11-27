@@ -1,7 +1,7 @@
 "use client";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { useRouter } from "next/navigation";
-import { useLoadingContext } from "@/context/global/loadingContext";
+import { useLoadingContext } from "@/context/loadingContext";
 
 export default function useLoaderRouter(): AppRouterInstance {
   const { loadRoute } = useLoadingContext();

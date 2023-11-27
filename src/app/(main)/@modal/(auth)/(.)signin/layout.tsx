@@ -1,8 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import Modal, { type ModalRef } from "@/components/shared/Modal";
-import CloseButton from "@/components/shared/icons/CloseButton";
+import Modal, { type ModalRef } from "@/components/Modal";
+import CloseButton from "@/components/CloseButton";
 import styles from "./layout.module.css";
 
 export default function SignInModalLayout({

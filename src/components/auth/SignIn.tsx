@@ -3,10 +3,10 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { getProviders } from "next-auth/react";
 import { options } from "@/app/api/auth/[...nextauth]/options";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 import Provider from "./Provider";
 import AuthError from "./AuthError";
-import Logos from "../shared/Logos";
+import Logos from "../../assets/Logos";
 import styles from "./SignIn.module.css";
 
 export default async function SignIn() {

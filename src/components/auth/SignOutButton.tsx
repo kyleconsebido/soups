@@ -1,10 +1,10 @@
 "use client";
 import { forwardRef } from "react";
 import { signOut } from "next-auth/react";
-import { SignOut } from "../shared/icons";
-import Button, { type ButtonProps } from "../shared/Button";
+import { SignOut } from "../../assets/icons";
+import Button, { type ButtonProps } from "../Button";
 import styles from "./SignOutButton.module.css";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
 interface SignOutButtonProps extends ButtonProps {
   callbackUrl?: string | undefined;
