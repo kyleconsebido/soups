@@ -1,6 +1,6 @@
-import { EmptyBowl } from "@/components/shared/icons";
-import Button from "@/components/shared/Button";
-import RouteLoaderLink from "@/components/shared/RouteLoaderLink";
+import { EmptyBowl } from "@/assets/icons";
+import Button from "@/components/Button";
+import RouteLoaderLink from "@/components/RouteLoaderLink";
 import styles from "./not-found.module.css";
 
 export default function NotFound() {
