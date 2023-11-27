@@ -1,5 +1,5 @@
 import type { Session } from "next-auth";
-import { getSession } from "next-auth/react";
+import { getSession } from "@/utils/auth/getSession";
 import NavBar from "@/components/layout/NavBar";
 import SideBar from "@/components/layout/Sidebar";
 import Hero from "./Hero";
