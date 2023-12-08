@@ -12,18 +12,9 @@ import styles from "./Modal.module.css";
 
 const TRANSITION_DURATION_MS = 200;
 
-interface StartClosingOptions {
-  /**
-   * Execute the onClose callback function from Modal Props after closing
-   *
-   * @defaultValue true
-   */
-  runOnClose?: boolean;
-}
-
 export interface ModalRef {
   el: HTMLDivElement | null;
-  startClosing: (options?: StartClosingOptions) => Promise<void>;
+  close: () => Promise<void>;
 }
 
 interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -33,27 +24,26 @@ interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Modal = forwardRef<ModalRef, ModalProps>(function Modal(
-  { isOpen, onClose, children, className, ...props }: ModalProps,
+  { isOpen = false, onClose, children, className, ...props }: ModalProps,
   ref
 ) {
   const modalRef = useRef<HTMLDivElement | null>(null);
-  const [isClosing, setIsClosing] = useState(false);
+  const [open, setOpen] = useState(isOpen);
 
-  const handleClose = useCallback(
-    async (options: StartClosingOptions = { runOnClose: true }) => {
-      setIsClosing(true);
-      await new Promise((resolve) =>
-        setTimeout(() => {
-          onClose && options?.runOnClose && onClose();
-          resolve(null);
-        }, TRANSITION_DURATION_MS)
-      );
-    },
-    [onClose]
-  );
+  const handleClose = useCallback(async () => {
+    modalRef.current?.classList.add(styles.closing);
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        modalRef.current?.classList.remove(styles.closing);
+        onClose && onClose();
+        setOpen(false);
+        resolve(null);
+      }, TRANSITION_DURATION_MS)
+    );
+  }, [onClose]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!open) return;
 
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") {
@@ -63,30 +53,28 @@ const Modal = forwardRef<ModalRef, ModalProps>(function Modal(
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, handleClose]);
+  }, [open, handleClose]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!open) return;
 
     window.document.documentElement.style.overflowY = "hidden";
 
     return () => {
       window.document.documentElement.style.overflowY = "";
     };
-  }, [isOpen]);
+  }, [open]);
 
   useImperativeHandle(
     ref,
     () => ({
       el: modalRef.current,
-      async startClosing() {
-        await handleClose();
-      },
+      close: handleClose,
     }),
     [handleClose]
   );
 
-  if (!isOpen) {
+  if (!open) {
     return null;
   }
 
@@ -97,13 +85,12 @@ const Modal = forwardRef<ModalRef, ModalProps>(function Modal(
   return (
     <div
       ref={modalRef}
-      className={cn(styles.container, isClosing && styles.closing)}
+      className={styles.container}
       onPointerDown={handleClickBackground}
       style={{
         transitionDuration: TRANSITION_DURATION_MS + "ms",
         ...props.style,
       }}
-      aria-hidden={!isOpen || isClosing}
       aria-label="modal"
       aria-modal
       role="dialog"
