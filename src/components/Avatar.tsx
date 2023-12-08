@@ -7,7 +7,7 @@ import styles from "./Avatar.module.css";
 
 type AvatarProps = React.HTMLAttributes<HTMLButtonElement> &
   React.HTMLProps<HTMLButtonElement> &
-  Pick<React.HTMLProps<HTMLImageElement>, "src">;
+  Partial<Pick<React.HTMLProps<HTMLImageElement>, "src">>;
 
 const Avatar = forwardRef<HTMLButtonElement, AvatarProps>(function Avatar(
   { type = "button", className, disabled, src, ...props },
