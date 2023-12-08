@@ -1,0 +1,20 @@
+.submit {
+  min-width: 10em;
+  height: 3em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.submit::before {
+  --height: 50px;
+  --width: 50px;
+}
+
+.submit:enabled:hover {
+  background-color: var(--red-500);
+}
+
+.submit:disabled {
+  background-color: var(--black-500);
+  color: var(--black-300)
+}

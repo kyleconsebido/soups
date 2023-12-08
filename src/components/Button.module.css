@@ -92,6 +92,7 @@
 .button {
   z-index: 1;
 }
+
 .button::before {
   --height: 100px;
   --width: 100px;

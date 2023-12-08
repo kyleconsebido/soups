@@ -1,0 +1,73 @@
+.container {
+  --padding: 1.1em 12px 1em 12px;
+  --border-radius: 6px;
+  --background-color: var(--black-500);
+
+  position: relative;
+}
+
+.input {
+  box-sizing: border-box;
+  padding: var(--padding);
+  background-color: var(--black-500);
+  outline: none;
+  border: none;
+  border-radius: var(--border-radius);
+  color: white;
+  font-family: inherit;
+  font-size: 1em;
+  transition: box-shadow 0.2s;
+  resize: none;
+  width: 100%;
+  z-index: 0;
+}
+
+.input:focus {
+  box-shadow: 0 0 0 1px var(--red-200);
+}
+
+.input::placeholder {
+  color: transparent;
+}
+
+.placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: var(--padding);
+  font-weight: 900;
+  text-transform: uppercase;
+  pointer-events: none;
+
+  font-size: 0.6em;
+  translate: 0 -0.6em;
+  color: var(--gray-300);
+  transition: font-size 0.2s, translate 0.2s, color 0.2s;
+  width: 100%;
+}
+
+.placeholder::before {
+  content: "";
+  position: absolute;
+  top: 0.6em;
+  left: 0;
+  width: calc(100% - 3px);
+  height: 1em;
+  box-sizing: border-box;
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
+  z-index: -1;
+}
+
+.container:has(.input:not(:focus):placeholder-shown) > .placeholder {
+  translate: 0;
+  font-size: 1em;
+  color: var(--black-300);
+}
+
+.placeholder::after {
+  content: " " attr(data-error);
+  color: var(--red-200);
+}
