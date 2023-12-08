@@ -8,6 +8,7 @@ import RouteLoaderLink from "../RouteLoaderLink";
 import Button from "../Button";
 import HamburgerNav from "./HamburgerNav";
 import AvatarMenu from "./AvatarMenu";
+import AddPostButton from "../posts/AddPost";
 import styles from "./NavBar.module.css";
 
 export default function NavBar({ user }: { user: Session["user"] }) {
@@ -31,7 +32,9 @@ export default function NavBar({ user }: { user: Session["user"] }) {
       )}
     >
       <div className={styles.container}>
-        <ul className={styles.list}>
+        <ul
+          className={cn(styles.list, !user && !isIntersecting && styles.hide)}
+        >
           {user && (
             <li className={styles.hamburger}>
               <HamburgerNav
@@ -42,22 +45,27 @@ export default function NavBar({ user }: { user: Session["user"] }) {
             </li>
           )}
           <li>
-            <RouteLoaderLink
-              className={cn(
-                styles.link,
-                !isIntersecting && !user && styles.hide
-              )}
-              href={"/"}
-            >
+            <RouteLoaderLink className={styles.link} href={"/"}>
               <LogoName className={styles.logo} />
             </RouteLoaderLink>
           </li>
         </ul>
-        <ul className={cn(styles.list, styles.end)}>
+        <ul
+          className={cn(
+            styles.list,
+            styles.end,
+            !user && !isIntersecting && styles.hide
+          )}
+        >
+          {user && (
+            <li>
+              <AddPostButton />
+            </li>
+          )}
           <li>
             {!user ? (
               <RouteLoaderLink
-                className={cn(styles.link, !isIntersecting && styles.hide)}
+                className={styles.link}
                 href={"/signin"}
                 scroll={false}
               >

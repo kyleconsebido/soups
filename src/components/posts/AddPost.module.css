@@ -1,0 +1,48 @@
+.addPost {
+  height: 32px;
+}
+
+.modal {
+  width: clamp(300px, 90svw, 650px);
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 1em;
+  min-height: fit-content;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.title {
+  font-size: 1rem;
+  width: 100%;
+}
+
+.body {
+  height: 100px;
+}
+
+.submitContainer {
+  display: flex;
+}
+
+.count {
+  color: var(--gray-300);
+  font-size: 0.8em;
+  margin-top: -0.8em;
+}
+
+.submit {
+  flex-grow: 0;
+  width: fit-content;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .addPost span {
+    display: none;
+  }
+}

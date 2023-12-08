@@ -93,8 +93,8 @@ const ToastComponent = forwardRef<HTMLDivElement, ToastComponentProps>(
     }, [toast, handleRemove]);
 
     useEffectAfterMount(() => {
-      handleRemove(toast.id);
-    }, [pathname, handleRemove]);
+      if (!toast.routePersist) handleRemove(toast.id);
+    }, [pathname, toast, handleRemove]);
 
     return (
       <div
