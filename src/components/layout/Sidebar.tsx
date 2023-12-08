@@ -46,16 +46,12 @@ export default function SideBar({ userId }: { userId?: string }) {
       {hoveredOn !== 0 && (
         <span
           className={cn(styles.hoverBox, hoveredOn < 0 && styles.exit)}
-          role="presentation"
-          aria-hidden="true"
           style={{ "--i": Math.abs(hoveredOn) } as React.CSSProperties}
         />
       )}
       {currentPathIndex !== -1 && (
         <span
           className={cn(styles.selectedBox, styles.animate)}
-          role="presentation"
-          aria-hidden="true"
           style={
             {
               "--i": currentPathIndex + 1,

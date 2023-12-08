@@ -8,3 +8,9 @@
   max-width: 1920px;
   min-height: calc(100svh - 60px);
 }
+
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
