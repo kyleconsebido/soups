@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "67d41f90-2326-4f2d-95ea-7db2d5fbc0e4",
+  "id": "f85454b0-fb42-48a6-b160-3b4adaa4e99a",
   "prevId": "785a51f1-34b7-4b6a-8c3d-6a3f549e4652",
   "tables": {
     "account": {
@@ -265,7 +265,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "followers": {
+    "follows": {
       "name": "follows",
       "columns": {
         "userId": {
@@ -300,9 +300,9 @@
         }
       },
       "foreignKeys": {
-        "followers_userId_user_id_fk": {
-          "name": "followers_userId_user_id_fk",
-          "tableFrom": "followers",
+        "follows_userId_user_id_fk": {
+          "name": "follows_userId_user_id_fk",
+          "tableFrom": "follows",
           "tableTo": "user",
           "columnsFrom": [
             "userId"
@@ -313,9 +313,9 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "followers_followedId_user_id_fk": {
-          "name": "followers_followedId_user_id_fk",
-          "tableFrom": "followers",
+        "follows_followedId_user_id_fk": {
+          "name": "follows_followedId_user_id_fk",
+          "tableFrom": "follows",
           "tableTo": "user",
           "columnsFrom": [
             "followedId"
@@ -328,12 +328,12 @@
         }
       },
       "compositePrimaryKeys": {
-        "followers_userId_followedId_pk": {
+        "follows_userId_followedId_pk": {
           "columns": [
             "followedId",
             "userId"
           ],
-          "name": "followers_userId_followedId_pk"
+          "name": "follows_userId_followedId_pk"
         }
       },
       "uniqueConstraints": {}
@@ -531,6 +531,13 @@
           "name": "votes_postIdx",
           "columns": [
             "postId"
+          ],
+          "isUnique": false
+        },
+        "votes_isLikedx": {
+          "name": "votes_isLikedx",
+          "columns": [
+            "isLiked"
           ],
           "isUnique": false
         }

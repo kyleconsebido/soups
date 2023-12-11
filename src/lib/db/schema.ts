@@ -108,6 +108,7 @@ export const votes = sqliteTable(
   (votes) => ({
     votes_userIdx: index("votes_userIdx").on(votes.userId),
     votes_postIdx: index("votes_postIdx").on(votes.postId),
+    votes_isLikedx: index("votes_isLikedx").on(votes.isLiked),
   })
 );
 

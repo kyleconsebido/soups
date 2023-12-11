@@ -49,4 +49,5 @@ CREATE INDEX `follows_userIdx` ON `follows` (`userId`);--> statement-breakpoint
 CREATE INDEX `follows_followedIdx` ON `follows` (`followedId`);--> statement-breakpoint
 CREATE INDEX `posts_userIdx` ON `posts` (`userId`);--> statement-breakpoint
 CREATE INDEX `votes_userIdx` ON `votes` (`userId`);--> statement-breakpoint
-CREATE INDEX `votes_postIdx` ON `votes` (`postId`);
+CREATE INDEX `votes_postIdx` ON `votes` (`postId`);--> statement-breakpoint
+CREATE INDEX `votes_isLikedx` ON `votes` (`isLiked`);

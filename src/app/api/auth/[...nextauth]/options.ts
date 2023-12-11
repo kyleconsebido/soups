@@ -1,10 +1,11 @@
 import type { NextAuthOptions } from "next-auth";
+import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { db } from "@/lib/db";
 import GoogleProvider from "next-auth/providers/google";
 import DiscordProvider from "next-auth/providers/discord";
-import { DrizzleAdapterFix } from "@/lib/db/Adapter";
 
 export const options: NextAuthOptions = {
-  adapter: DrizzleAdapterFix(),
+  adapter: DrizzleAdapter(db),
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GoogleProvider({
