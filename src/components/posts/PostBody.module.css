@@ -1,0 +1,53 @@
+.showAll {
+  max-height: calc(var(--scroll-height, max-content) + 25px) !important;
+}
+.showAll > .overflowing {
+  max-height: var(--scroll-height, max-content) !important;
+}
+
+.overflowing {
+  transition: max-height 0.2s;
+  max-height: 75px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.showMore {
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background-color: var(--black-800);
+  border-radius: 6px;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.showMore:enabled {
+  cursor: pointer;
+}
+
+.showAll .showMore:enabled:hover > .dot {
+  translate: 0 -2px;
+}
+
+.showMore:enabled:hover > .dot {
+  translate: 0 2px;
+}
+
+.dot {
+  height: 0.5em;
+  width: 0.5em;
+  background-color: var(--black-300);
+  border-radius: 50%;
+  display: inline-block;
+  transition: translate 0.2s;
+}
+
+.dot:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.dot:nth-child(3) {
+  transition-delay: 0.2s;
+}

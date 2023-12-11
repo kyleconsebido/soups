@@ -31,8 +31,8 @@ html {
 }
 
 .scrollbar::-webkit-scrollbar {
-  height: 3px;
-  width: 3px;
+  height: 6px;
+  width: 6px;
 }
 
 .scrollbar::-webkit-scrollbar-track {
@@ -53,4 +53,20 @@ body {
 
 a {
   color: var(--blue-300);
+}
+
+.loading {
+  animation: loading 3s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-color: var(--black-300);
+  }
+  50% {
+    background-color: var(--black-400);
+  }
+  100% {
+    background-color: var(--black-300);
+  }
 }

@@ -11,3 +11,4 @@ export * from "./Soup";
 export * from "./User";
 export * from "./EmptyBowl";
 export * from "./Add";
+export * from "./Comments";

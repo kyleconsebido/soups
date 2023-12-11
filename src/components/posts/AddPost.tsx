@@ -25,13 +25,9 @@ export default function AddPostButton() {
 
     const max = name === "body" ? MAX_POST_CHARACTERS : MAX_TITLE_CHARACTERS;
 
-    if (value.length > max) {
-      return;
-    }
-
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [name]: value.slice(0, max),
     }));
   }
 

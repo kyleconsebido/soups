@@ -44,6 +44,7 @@ export default function AddPostForm({
         onChange={onChange}
         autoFocus
         required
+        maxLength={MAX_TITLE_CHARACTERS}
       />
       <span className={styles.count}>
         {`${title.length}/${MAX_TITLE_CHARACTERS}`}
@@ -55,6 +56,7 @@ export default function AddPostForm({
         value={body}
         onChange={onChange}
         required
+        maxLength={MAX_POST_CHARACTERS}
       />
       <div className={styles.submitContainer}>
         <span className={styles.count}>

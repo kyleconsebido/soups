@@ -7,27 +7,24 @@ interface ObserverInstance {
 }
 
 interface useObserverParams {
-  target?: Element;
+  target?: React.MutableRefObject<Element | null>;
 }
 
-export function useObserver({ target }: useObserverParams): ObserverInstance {
+export function useObserver({
+  target,
+}: useObserverParams = {}): ObserverInstance {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const targetRef = useRef<HTMLSpanElement | null>(null);
+
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       setIsIntersecting(entry.isIntersecting);
     });
 
     if (target) {
-      observer.observe(target);
+      observer.observe(target.current!);
     } else if (targetRef.current) {
       observer.observe(targetRef.current);
-    } else {
-      console.error(
-        new TypeError(
-          "useObserver has no target to observe. Either pass a target in the parameters or use the returned target"
-        )
-      );
     }
 
     return () => observer.disconnect();

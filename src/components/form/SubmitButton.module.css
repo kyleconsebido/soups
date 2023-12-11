@@ -14,7 +14,7 @@
   background-color: var(--red-500);
 }
 
-.submit:disabled {
+.submit.submit:disabled {
   background-color: var(--black-500);
-  color: var(--black-300)
+  color: var(--black-300);
 }

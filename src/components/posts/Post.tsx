@@ -1,15 +1,21 @@
-import type { Post, User } from "@/lib/db/models";
+import type { Post } from "@/lib/db/models";
 import { inriaSerif } from "@/assets/fonts";
 import { cn } from "@/utils";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import utc from "dayjs/plugin/utc";
 import Avatar from "../Avatar";
 import RouteLoaderLink from "../RouteLoaderLink";
+import PostBody from "./PostBody";
+import LikeButton from "./LikeButton";
+import DislikeButton from "./DislikeButton";
+import CommentsButton from "./CommentsButton";
 import styles from "./Post.module.css";
 
-interface PostProps {
-  post: Post & Partial<Pick<User, "name" | "image">>;
-}
+dayjs.extend(relativeTime);
+dayjs.extend(utc);
 
-export default function Post({ post }: PostProps) {
+export default function Post({ post }: { post: Post }) {
   return (
     <div className={styles.post}>
       <h1 className={cn(styles.title, inriaSerif.className)}>{post.title}</h1>
@@ -23,15 +29,16 @@ export default function Post({ post }: PostProps) {
         <span className={styles.info}>
           <div>{post.name}</div>
           <div className={styles.date}>
-            {new Date(post.createdAt).toLocaleDateString(undefined, {
-              month: "long",
-              day: "2-digit",
-              year: "numeric",
-            })}
+            {dayjs.utc(post.createdAt).local().fromNow()}
           </div>
         </span>
+        <span className={styles.buttons}>
+          <CommentsButton comments={post.comments} />
+          <LikeButton likes={post.likes} />
+          <DislikeButton dislikes={post.dislikes} />
+        </span>
       </div>
-      <div className={styles.body}>{post.body}</div>
+      <PostBody className={styles.body} key={post.body} body={post.body} />
     </div>
   );
 }
